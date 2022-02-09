@@ -8,7 +8,10 @@ module.exports = {
       fontFamily: {
         primary: ['Montserrat', 'sans-serif'],
       },
+      colors: {
+        dark: '#454343',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };
