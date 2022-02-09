@@ -1,3 +1,5 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -6,10 +8,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Montserrat', 'sans-serif'],
+        primary: ['Montserrat', ...fontFamily.sans],
       },
       colors: {
         dark: '#454343',
+        secondary: '#FFD600',
       },
     },
   },

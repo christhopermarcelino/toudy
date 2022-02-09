@@ -11,25 +11,25 @@ export default function Navbar() {
   const currentPath = router.pathname;
 
   return (
-    <Disclosure as='nav' className='bg-white shadow'>
+    <Disclosure as='nav' className='sticky top-0 z-50 bg-white shadow'>
       {({ open }) => (
         <>
-          <div className='max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 '>
+          <div className='px-2 mx-auto max-w-7xl sm:px-6 lg:px-8 '>
             <div className='relative flex justify-between h-16'>
               <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
                 {/* Mobile menu button */}
-                <Disclosure.Button className='inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500'>
+                <Disclosure.Button className='inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500'>
                   <span className='sr-only'>Open main menu</span>
                   {open ? (
-                    <XIcon className='block h-6 w-6' aria-hidden='true' />
+                    <XIcon className='block w-6 h-6' aria-hidden='true' />
                   ) : (
-                    <MenuIcon className='block h-6 w-6' aria-hidden='true' />
+                    <MenuIcon className='block w-6 h-6' aria-hidden='true' />
                   )}
                 </Disclosure.Button>
               </div>
-              <div className='flex-1 flex items-center justify-center sm:items-stretch sm:justify-start'>
-                <div className='flex-shrink-0 flex items-center'>
-                  <h1 className='text-dark font-bold text-lg'>Ajarin.</h1>
+              <div className='flex items-center justify-center flex-1 sm:items-stretch sm:justify-start'>
+                <div className='flex items-center flex-shrink-0'>
+                  <h1 className='text-lg font-bold text-dark'>Ajarin.</h1>
                 </div>
               </div>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
@@ -80,15 +80,15 @@ export default function Navbar() {
                   </Link>
                 </div>
 
-                <Menu as='div' className='ml-8 relative'>
+                <Menu as='div' className='relative ml-8'>
                   {({ open }) => (
                     <>
                       <div>
-                        <Menu.Button className='bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'>
+                        <Menu.Button className='flex text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'>
                           <span className='sr-only'>Open user menu</span>
 
                           <Image
-                            className='h-8 w-8 rounded-full'
+                            className='w-8 h-8 rounded-full'
                             src='/images/profile_pic.png'
                             alt=''
                             height='36'
@@ -108,7 +108,7 @@ export default function Navbar() {
                       >
                         <Menu.Items
                           static
-                          className='origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none'
+                          className='absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
                         >
                           <Menu.Item>
                             {({ active }) => (
