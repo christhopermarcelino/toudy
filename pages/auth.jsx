@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { useState } from 'react';
+
 import BottomBorderInput from '@/components/BottomBorderInput';
+import Navbar from '@/components/Navbar';
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -8,6 +10,7 @@ export default function Auth() {
   return (
     <>
       <Head></Head>
+      <Navbar />
       <main className='md:flex-row min-h-main bg-white flex flex-col items-center'>
         <h1 className='flex-1 flex text-dark font-bold text-6xl md:text-8xl justify-center items-center'>
           Ajarin.
