@@ -6,6 +6,7 @@ import SelectInput from '@/components/SelectInput';
 import Navbar from '@/components/Navbar';
 import ServiceCard from '@/components/ServiceCard';
 import FullCard from '@/components/FullCard';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -245,6 +246,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }
