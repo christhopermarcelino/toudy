@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import Image from 'next/image';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import classNames from '@/lib/helpers';
+import { classNames } from '@/lib/helpers';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -16,17 +16,6 @@ export default function Navbar() {
         <>
           <div className='px-2 mx-auto max-w-7xl sm:px-6 lg:px-8 '>
             <div className='relative flex justify-between h-16'>
-              <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
-                {/* Mobile menu button */}
-                <Disclosure.Button className='inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500'>
-                  <span className='sr-only'>Open main menu</span>
-                  {open ? (
-                    <XIcon className='block w-6 h-6' aria-hidden='true' />
-                  ) : (
-                    <MenuIcon className='block w-6 h-6' aria-hidden='true' />
-                  )}
-                </Disclosure.Button>
-              </div>
               <div className='flex items-center justify-center flex-1 sm:items-stretch sm:justify-start'>
                 <div className='flex items-center flex-shrink-0'>
                   <h1 className='text-lg font-bold text-dark'>Ajarin.</h1>
@@ -80,80 +69,20 @@ export default function Navbar() {
                   </Link>
                 </div>
 
-                <Menu as='div' className='relative ml-8'>
-                  {({ open }) => (
-                    <>
-                      <div>
-                        <Menu.Button className='flex text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'>
-                          <span className='sr-only'>Open user menu</span>
-
-                          <Image
-                            className='w-8 h-8 rounded-full'
-                            src='/images/profile_pic.png'
-                            alt=''
-                            height='36'
-                            width='36'
-                          />
-                        </Menu.Button>
-                      </div>
-                      <Transition
-                        show={open}
-                        as={Fragment}
-                        enter='transition ease-out duration-200'
-                        enterFrom='transform opacity-0 scale-95'
-                        enterTo='transform opacity-100 scale-100'
-                        leave='transition ease-in duration-75'
-                        leaveFrom='transform opacity-100 scale-100'
-                        leaveTo='transform opacity-0 scale-95'
-                      >
-                        <Menu.Items
-                          static
-                          className='absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
-                        >
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href='#'
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
-                                )}
-                              >
-                                Your Profile
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href='#'
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
-                                )}
-                              >
-                                Settings
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href='#'
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
-                                )}
-                              >
-                                Sign out
-                              </a>
-                            )}
-                          </Menu.Item>
-                        </Menu.Items>
-                      </Transition>
-                    </>
-                  )}
-                </Menu>
+                <div className='relative flex ml-8 text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'>
+                  <Link href='/profil'>
+                    <a>
+                      <span className='sr-only'>Open user menu</span>
+                      <Image
+                        className='w-8 h-8 rounded-full'
+                        src='/images/profile_pic.png'
+                        alt='Profile Pciture'
+                        height='36'
+                        width='36'
+                      />
+                    </a>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
