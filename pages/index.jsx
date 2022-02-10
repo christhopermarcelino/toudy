@@ -71,11 +71,11 @@ export default function Home() {
         </section>
 
         <section className='min-h-main'>
-          <h2 className='text-5xl mb-8 text-center text-dark'>
+          <h2 className='mb-8 text-5xl text-center text-dark'>
             Materi Pembelajaran
           </h2>
           <div className='grid grid-rows-2 gap-12'>
-            <div className='grid rows-span-1 grid-cols-3 gap-12'>
+            <div className='grid grid-cols-3 gap-12 rows-span-1'>
               <FullCard
                 className='col-span-1'
                 title='Kursus daring'
@@ -97,7 +97,7 @@ export default function Home() {
                 desc='Cara Membuat Google Form Kurang Dari Lima Menit'
               />
             </div>
-            <div className='grid rows-span-1 grid-cols-3 gap-12'>
+            <div className='grid grid-cols-3 gap-12 rows-span-1'>
               <FullCard
                 className='cols-span-1'
                 title='Kursus daring'
@@ -124,21 +124,21 @@ export default function Home() {
           </div>
         </section>
 
-        <section className='min-h-main flex flex-col md:flex-row-reverse'>
-          <div className='flex-1 flex justify-center items-center'>
-            <h2 className='text-right text-5xl text-dark'>
+        <section className='flex flex-col min-h-main md:flex-row-reverse'>
+          <div className='flex items-center justify-center flex-1'>
+            <h2 className='text-5xl text-right text-dark'>
               <span className='text-[#55BBF6] text-3xl'>Testimoni</span> <br />{' '}
               Lihatlah apa yang <br /> dirasakan oleh <br />
               pengguna kami
             </h2>
           </div>
-          <div className='flex-1 flex justify-center items-center'>
-            <div className='bg-white p-6 rounded-md shadow-lg border-b-4 border-r-4 border-gray-200'>
+          <div className='flex items-center justify-center flex-1'>
+            <div className='p-6 bg-white border-b-4 border-r-4 border-gray-200 rounded-md shadow-lg'>
               <div className='px-4 py-5 sm:px-6'>
-                <div className='-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap'>
+                <div className='flex flex-wrap items-center justify-between -mt-4 -ml-4 sm:flex-nowrap'>
                   <div className='mt-4'>
                     <div className='flex items-center'>
-                      <div className='relative rounded-full h-12 w-12'>
+                      <div className='relative w-12 h-12 rounded-full'>
                         <Image
                           src='/images/profile_pic.png'
                           alt='Profile picture'
@@ -147,17 +147,17 @@ export default function Home() {
                         />
                       </div>
                       <div className='ml-4'>
-                        <p className='text-lg leading-6 font-semibold'>
+                        <p className='text-lg font-semibold leading-6'>
                           Nur Siti Andini
                         </p>
-                        <p className='text-sm text-secondary font-medium'>
+                        <p className='text-sm font-medium text-secondary'>
                           Guru SD Negeri 299 Jakarta
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className='ml-4 mt-4 flex-shrink-0 flex'>
-                    <span className='font-primary font-bold text-7xl text-secondary'>
+                  <div className='flex flex-shrink-0 mt-4 ml-4'>
+                    <span className='font-bold font-primary text-7xl text-secondary'>
                       &lsquo;&lsquo;
                     </span>
                   </div>
@@ -172,75 +172,75 @@ export default function Home() {
           </div>
         </section>
 
-        <section className='min-h-main text-center flex flex-col justify-center items-center'>
+        <section className='flex flex-col items-center justify-center text-center min-h-main'>
           <div>
             <div className='relative mb-8'>
               <div className='absolute inset-0 flex items-center'>
-                <div className='w-full border-t translate-y-1/2 border-dark' />
+                <div className='w-full translate-y-1/2 border-t border-dark' />
               </div>
               <div className='relative flex justify-center text-sm'>
-                <h2 className='px-2 bg-white text-dark text-5xl'>
+                <h2 className='px-2 text-5xl bg-white text-dark'>
                   Ajar<span className='text-secondary'>in</span>
                 </h2>
               </div>
             </div>
-            <p className='w-1/2 mx-auto text-2xl mb-12'>
+            <p className='w-1/2 mx-auto mb-12 text-2xl'>
               Kursus daring, webinar, video pendek, alat mengajar, komunitas
               ajarin, dan lain-lainya. Yuk gabung dengan komunitas ajarin!
             </p>
             <Link href='#'>
-              <a className='font-bold py-3 px-6 rounded-lg text-xl bg-secondary text-white'>
+              <a className='px-6 py-3 text-xl font-bold text-white rounded-lg bg-secondary'>
                 Gabung
               </a>
             </Link>
           </div>
         </section>
 
-        <section className='min-h-main flex justify-center items-center'>
+        <section className='flex items-center justify-center min-h-main'>
           <div className='w-full'>
-            <h2 className='text-4xl text-center font-medium mb-12'>
+            <h2 className='mb-12 text-4xl font-medium text-center'>
               Ajarin Bekerjasama Dengan Beberapa Mitra
             </h2>
             <div className='relative grid grid-cols-5 gap-4'>
-              <div className='col-span-1 relative w-full h-48'>
-                <Image
+              <div className='relative w-full h-48 col-span-1 bg-gray-300 animate-pulse'>
+                {/* <Image
                   src='/images/zenius.png'
                   alt='Zenius'
                   layout='fill'
                   objectFit='contain'
-                />
+                /> */}
               </div>
-              <div className='col-span-1 w-full h-48 relative'>
-                <Image
+              <div className='relative w-full h-48 col-span-1 bg-gray-300 animate-pulse'>
+                {/* <Image
                   src='/images/digitalent.png'
                   alt='Digitalent'
                   layout='fill'
                   objectFit='contain'
-                />
+                /> */}
               </div>
-              <div className='col-span-1 w-full h-48 relative'>
-                <Image
+              <div className='relative w-full h-48 col-span-1 bg-gray-300 animate-pulse'>
+                {/* <Image
                   src='/images/ruangguru.png'
                   alt='Ruang Guru'
                   layout='fill'
                   objectFit='contain'
-                />
+                /> */}
               </div>
-              <div className='col-span-1 w-full h-48 relative'>
-                <Image
+              <div className='relative w-full h-48 col-span-1 bg-gray-300 animate-pulse'>
+                {/* <Image
                   src='/images/quipper.png'
                   alt='Quipper'
                   layout='fill'
                   objectFit='contain'
-                />
+                /> */}
               </div>
-              <div className='col-span-1 w-full h-48 relative'>
-                <Image
+              <div className='relative w-full h-48 col-span-1 bg-gray-300 animate-pulse'>
+                {/* <Image
                   src='/images/kemendikbud.png'
                   alt='Kemendikbud'
                   layout='fill'
                   objectFit='contain'
-                />
+                /> */}
               </div>
             </div>
           </div>
