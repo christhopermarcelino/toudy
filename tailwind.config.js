@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         dark: '#454343',
         secondary: '#FFD600',
+        tertiary: '#55BBF636',
       },
     },
   },
