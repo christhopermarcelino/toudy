@@ -1,8 +1,8 @@
 Toudy Project  
    
-Team Name : Toudy
-Member :   
-  1. Daniel Hermawan  
+Team Name : Toudy  
+Member :  
+1. Daniel Hermawan  
   2. Christhoper Marcelino Mamahit
   3. Adifa Widyadhani Chanda D'Layla
          
