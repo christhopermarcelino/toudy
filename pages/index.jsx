@@ -79,21 +79,21 @@ export default function Home() {
               <FullCard
                 className='col-span-1'
                 title='Kursus daring'
-                src='/images/Penerapan_Blended_Learning.png'
+                src='/images/penerapan_blended_learning.png'
                 desc='Penerapan Blended Learning'
                 date='03 - 09 Februari 2022'
               />
               <FullCard
                 className='col-span-1'
                 title='Webinar'
-                src='/images/Bincang_Guru_Inovatif.png'
+                src='/images/bincang_guru_inovatif.png'
                 desc='Bincang Guru Inovatif'
                 date='5 Februari 2022'
               />
               <FullCard
                 className='col-span-1'
                 title='Video pendek'
-                src='/images/Cara_Membuat_Google_Form_Kurang_Dari_Lima_Menit.png'
+                src='/images/cara_membuat_google_form_kurang_dari_lima_menit.png'
                 desc='Cara Membuat Google Form Kurang Dari Lima Menit'
               />
             </div>
@@ -101,7 +101,7 @@ export default function Home() {
               <FullCard
                 className='cols-span-1'
                 title='Kursus daring'
-                src='/images/Siap_Hadapi_AKM!.png'
+                src='/images/siap_hadapi_akm!.png'
                 desc='Siap Hadapi AKM!
 '
                 date='01 - 03 Februari 2022'
@@ -109,7 +109,7 @@ export default function Home() {
               <FullCard
                 className='cols-span-1'
                 title='Webinar'
-                src='/images/Persiapan_Tatap_Muka.png'
+                src='/images/persiapan_tatap_muka.png'
                 desc='Persiapan Tatap Muka
 '
                 date='03 Januari 2022'
@@ -117,7 +117,7 @@ export default function Home() {
               <FullCard
                 className='cols-span-1'
                 title='Video pendek'
-                src='/images/Rumus_Rumus_Microsoft_Excel_yang_Wajib_Diketahui.png'
+                src='/images/rumus_rumus_microsoft_excel_yang_wajib_diketahui.png'
                 desc='Rumus - Rumus Microsoft Excel yang Wajib Diketahui'
               />
             </div>
