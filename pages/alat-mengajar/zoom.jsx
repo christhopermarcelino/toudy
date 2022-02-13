@@ -104,8 +104,11 @@ export default function Zoom() {
                 />
               ))}
             </div>
-            <Link href='#'>
-              <a className='py-2 px-6 bg-tertiary font-semibold hover:bg-blue-300 focus:ring focus:ring-blue-400/80 text-xl rounded-lg'>
+            <Link href='https://zoom.us/'>
+              <a
+                target='_blank'
+                className='py-2 px-6 bg-tertiary font-semibold hover:bg-blue-300 focus:ring focus:ring-blue-400/80 text-xl rounded-lg'
+              >
                 Buat meetingmu di sini
               </a>
             </Link>
