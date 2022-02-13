@@ -164,7 +164,7 @@ export default function Home() {
                 </div>
               </div>
               <p>
-                “Sebelumnya saya bingung bagaimana cara enggage dengan peserta
+                “Sebelumnya saya bingung bagaimana cara engage dengan peserta
                 didik, berkat platform ini saya merasa terbantu dan lebih
                 percaya diri dalam mengajar”
               </p>
