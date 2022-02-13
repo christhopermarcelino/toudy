@@ -42,7 +42,7 @@ export default function Home() {
         </section>
 
         <section className='flex min-h-main'>
-          <h2 className='flex items-center flex-[2_2_0%] text-4xl text-dark'>
+          <h2 className='flex items-center flex-[2_2_0%] text-5xl text-dark'>
             Layanan ini tersedia untuk anda
           </h2>
           <div className='flex-[3_3_0%] flex  flex-col space-y-16 justify-center items-center'>
