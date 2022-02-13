@@ -12,7 +12,7 @@ export default function Footer() {
             Platform edukasi tenaga pengajar untuk meningkatkan kualitas
             pendidikan daring di Indonesia
           </p>
-          <p className='text-dark font-bold text-2xl'>2022 Ajarin.</p>
+          <p className='text-dark font-bold text-2xl'>&copy; 2022 Ajarin.</p>
         </div>
         <div className='col-span-1 text-right'>
           <h2 className='text-5xl text-dark mb-4'>Hubungi Kami</h2>
