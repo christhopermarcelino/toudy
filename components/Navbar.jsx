@@ -18,7 +18,13 @@ export default function Navbar() {
             <div className='relative flex justify-between h-16'>
               <div className='flex items-center justify-center flex-1 sm:items-stretch sm:justify-start'>
                 <div className='flex items-center flex-shrink-0'>
-                  <h1 className='text-lg font-bold text-dark'>Ajarin.</h1>
+                  <Link href='/'>
+                    <a>
+                      <h1 className='text-lg font-bold text-dark'>
+                        Ajar<span className='text-secondary'>in.</span>
+                      </h1>
+                    </a>
+                  </Link>
                 </div>
               </div>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
