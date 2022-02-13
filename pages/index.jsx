@@ -83,13 +83,17 @@ export default function Home() {
                 desc='Penerapan Blended Learning'
                 date='03 - 09 Februari 2022'
               />
-              <FullCard
-                className='col-span-1'
-                title='Webinar'
-                src='/images/bincang_guru_inovatif.png'
-                desc='Bincang Guru Inovatif'
-                date='5 Februari 2022'
-              />
+              <Link href='/webinar/bincang-guru-inovatif'>
+                <a>
+                  <FullCard
+                    className='col-span-1'
+                    title='Webinar'
+                    src='/images/bincang_guru_inovatif.png'
+                    desc='Bincang Guru Inovatif'
+                    date='5 Februari 2022'
+                  />
+                </a>
+              </Link>
               <FullCard
                 className='col-span-1'
                 title='Video pendek'
