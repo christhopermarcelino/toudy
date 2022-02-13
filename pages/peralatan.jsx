@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -13,11 +14,15 @@ export default function Peralatan() {
         <section className='grid grid-cols-2 gap-8 min-h-main'>
           <div className='p-8 space-y-6'>
             <h2 className='text-3xl font-semibold'>Online Meeting</h2>
-            <WideCard
-              name='Zoom meeting'
-              src='/images/zoom.png'
-              desc='Platform Video Conference Populer!'
-            />
+            <Link href='/alat-mengajar/zoom'>
+              <a>
+                <WideCard
+                  name='Zoom meeting'
+                  src='/images/zoom.png'
+                  desc='Platform Video Conference Populer!'
+                />
+              </a>
+            </Link>
             <WideCard
               name='Kumospace'
               src='/images/kumospace.png'
