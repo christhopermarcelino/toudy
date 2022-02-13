@@ -65,7 +65,6 @@ export default function Profil() {
             {!isChangingPassword ? (
               <>
                 <BottomBorderInput label='Nama lengkap' id='nama_lengkap' />
-                <BottomBorderInput label='NIK' id='nik' />
                 <BottomBorderInput label='Email' id='email' type='email' />
                 <BottomBorderInput label='Instansi' id='instansi' />
               </>
