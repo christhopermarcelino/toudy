@@ -148,7 +148,7 @@ export default function Home() {
                       </div>
                       <div className='ml-4'>
                         <p className='text-lg font-semibold leading-6'>
-                          Nur Siti Andini
+                          Rudi Setiawan
                         </p>
                         <p className='text-sm font-medium text-secondary'>
                           Guru SD Negeri 299 Jakarta
