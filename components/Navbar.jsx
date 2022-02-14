@@ -6,7 +6,10 @@ import { classNames } from '@/lib/helpers';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
+import { useAuth } from '@/context/AuthProvider';
+
 export default function Navbar() {
+  const user = useAuth();
   const router = useRouter();
   const currentPath = router.pathname;
 
@@ -74,21 +77,49 @@ export default function Navbar() {
                     </a>
                   </Link>
                 </div>
-
-                <div className='relative flex ml-8 text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'>
-                  <Link href='/profil'>
+                {user ? (
+                  <div className='relative flex ml-8 text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'>
+                    <Link href='/profil'>
+                      <a>
+                        <span className='sr-only'>Open user menu</span>
+                        <Image
+                          className='w-8 h-8 rounded-full'
+                          src='/images/profile_pic.png'
+                          alt='Profile Pciture'
+                          height='36'
+                          width='36'
+                        />
+                      </a>
+                    </Link>
+                  </div>
+                ) : (
+                  <Link href='/auth'>
                     <a>
-                      <span className='sr-only'>Open user menu</span>
-                      <Image
-                        className='w-8 h-8 rounded-full'
-                        src='/images/profile_pic.png'
-                        alt='Profile Pciture'
-                        height='36'
-                        width='36'
-                      />
+                      <button
+                        type='button'
+                        className='inline-flex items-center px-4 py-2 ml-8 text-sm font-medium text-blue-400 border border-transparent rounded-full shadow-sm hover:text-white focus:text-white hover:bg-blue-300 ring-2 ring-blue-400 focus:bg-blue-500'
+                      >
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          className='w-5 h-5 mr-2 -ml-1 text-blue-400 hover:text-white focus:text-white'
+                          aria-hidden='true'
+                          fill='none'
+                          viewBox='0 0 24 24'
+                          stroke='currentColor'
+                        >
+                          <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth={2}
+                            d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1'
+                          />
+                        </svg>
+                        {/* <MailIcon className="w-5 h-5 mr-2 -ml-1" aria-hidden="true" /> */}
+                        Masuk
+                      </button>
                     </a>
                   </Link>
-                </div>
+                )}
               </div>
             </div>
           </div>
