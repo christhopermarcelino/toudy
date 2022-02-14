@@ -106,18 +106,20 @@ export default function Home() {
                 className='cols-span-1'
                 title='Kursus daring'
                 src='/images/siap_hadapi_akm!.png'
-                desc='Siap Hadapi AKM!
-'
+                desc='Siap Hadapi AKM!'
                 date='01 - 03 Februari 2022'
               />
-              <FullCard
-                className='cols-span-1'
-                title='Webinar'
-                src='/images/persiapan_tatap_muka.png'
-                desc='Persiapan Tatap Muka
-'
-                date='03 Januari 2022'
-              />
+              <Link href='/webinar/persiapan-tatap-muka'>
+                <a>
+                  <FullCard
+                    className='cols-span-1'
+                    title='Webinar'
+                    src='/images/persiapan_tatap_muka.png'
+                    desc='Persiapan Tatap Muka'
+                    date='03 Januari 2022'
+                  />
+                </a>
+              </Link>
               <FullCard
                 className='cols-span-1'
                 title='Video pendek'
