@@ -1,9 +1,9 @@
-Team Name : Toudy  
+## Team Name : Toudy  
   
 Member :  
-1. Daniel Hermawan  
-2. Christhoper Marcelino Mamahit
-3. Adifa Widyadhani Chanda D'Layla
+   1. Daniel Hermawan  
+   2. Christhoper Marcelino Mamahit
+   3. Adifa Widyadhani Chanda D'Layla
          
 Website Description : Platform to educate teachers/lecturers during online learning system for a better education quality in Indonesia.  
   
