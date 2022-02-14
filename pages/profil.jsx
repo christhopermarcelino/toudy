@@ -2,6 +2,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import Router from 'next/router';
+import { useEffect } from 'react';
+
+import { useAuth } from '@/context/AuthProvider';
 
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -11,6 +15,12 @@ import SideInput from '@/components/SideInput';
 export default function Profil() {
   const [isChangingPassword, setIsChangingPassword] = useState(false);
   const [isEditingProfile, setIsEditingProfile] = useState(false);
+
+  const user = useAuth();
+
+  useEffect(() => {
+    if (!user) Router.push('/auth');
+  });
 
   const methods = useForm();
   const { handleSubmit } = methods;
