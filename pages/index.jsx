@@ -18,35 +18,36 @@ export default function Home() {
       </Head>
       <Navbar />
 
-      <main className='px-2 mx-auto max-w-7xl sm:px-6 lg:px-8'>
-        <section className='flex min-h-main'>
-          <div className='flex flex-col justify-center flex-1'>
-            <h2 className='mb-8 text-7xl text-dark'>
+      <main className='px-2 mx-auto max-w-7xl sm:px-6 lg:px-8 space-y-24'>
+        <section className='flex flex-col md:flex-row min-h-main'>
+          <div className='flex flex-col justify-center flex-[2_2_0%] md:flex-1'>
+            <h2 className='mb-8 text-5xl md:text-7xl text-dark'>
               Mulailah belajar <br />
               dengan kami
             </h2>
-            <p className='mb-4 text-xl'>
+            <p className='mb-4 text-lg md:text-xl'>
               Halo! <br />
               Apa yang anda butuhkan hari ini?
             </p>
             <SelectInput />
           </div>
-          <div className='relative flex items-center justify-center flex-1'>
+          <div className='relative flex items-center justify-center flex-[3_3_0%] md:flex-1'>
             <Image
               src='/images/home_image.png'
               alt='Ajarin'
               layout='fill'
               objectFit='contain'
+              objectPosition='center center'
             />
           </div>
         </section>
 
-        <section className='flex min-h-main'>
-          <h2 className='flex items-center flex-[2_2_0%] text-5xl text-dark'>
+        <section className='flex flex-col lg:flex-row min-h-main space-y-12'>
+          <h2 className='flex items-center flex-[2_2_0%] text-4xl lg:justify-start text-center lg:text-left justify-center md:text-5xl lg:text-6xl text-dark'>
             Layanan ini tersedia untuk anda
           </h2>
-          <div className='flex-[3_3_0%] flex  flex-col space-y-16 justify-center items-center'>
-            <div className='flex items-end justify-center '>
+          <div className='flex-[3_3_0%] flex  flex-col md:space-y-16 gap-4 justify-center items-center'>
+            <div className='flex flex-col md:flex-row items-end justify-center gap-4'>
               <ServiceCard
                 src='/images/kursus_daring.png'
                 title='Kursus Daring'
@@ -57,7 +58,7 @@ export default function Home() {
                 title='Video Pendek'
               />
             </div>
-            <div className='flex justify-center '>
+            <div className='flex justify-center flex-col md:flex-row gap-4'>
               <ServiceCard
                 src='/images/alat_mengajar.png'
                 title='Alat mengajar'
@@ -71,74 +72,70 @@ export default function Home() {
         </section>
 
         <section className='min-h-main'>
-          <h2 className='mb-8 text-5xl text-center text-dark'>
+          <h2 className='mb-8 text-3xl md:text-4xl lg:text-5xl text-center text-dark'>
             Materi Pembelajaran
           </h2>
-          <div className='grid grid-rows-2 gap-12'>
-            <div className='grid grid-cols-3 gap-12 rows-span-1'>
-              <FullCard
-                className='col-span-1'
-                title='Kursus daring'
-                src='/images/penerapan_blended_learning.png'
-                desc='Penerapan Blended Learning'
-                date='03 - 09 Februari 2022'
-              />
-              <Link href='/webinar/bincang-guru-inovatif'>
-                <a>
-                  <FullCard
-                    className='col-span-1'
-                    title='Webinar'
-                    src='/images/bincang_guru_inovatif.png'
-                    desc='Bincang Guru Inovatif'
-                    date='5 Februari 2022'
-                  />
-                </a>
-              </Link>
-              <FullCard
-                className='col-span-1'
-                title='Video pendek'
-                src='/images/cara_membuat_google_form_kurang_dari_lima_menit.png'
-                desc='Cara Membuat Google Form Kurang Dari Lima Menit'
-              />
-            </div>
-            <div className='grid grid-cols-3 gap-12 rows-span-1'>
-              <FullCard
-                className='cols-span-1'
-                title='Kursus daring'
-                src='/images/siap_hadapi_akm!.png'
-                desc='Siap Hadapi AKM!'
-                date='01 - 03 Februari 2022'
-              />
-              <Link href='/webinar/persiapan-tatap-muka'>
-                <a>
-                  <FullCard
-                    className='cols-span-1'
-                    title='Webinar'
-                    src='/images/persiapan_tatap_muka.png'
-                    desc='Persiapan Tatap Muka'
-                    date='03 Januari 2022'
-                  />
-                </a>
-              </Link>
-              <FullCard
-                className='cols-span-1'
-                title='Video pendek'
-                src='/images/rumus_rumus_microsoft_excel_yang_wajib_diketahui.png'
-                desc='Rumus - Rumus Microsoft Excel yang Wajib Diketahui'
-              />
-            </div>
+          <div className='grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-12 rows-span-1'>
+            <FullCard
+              className='col-span-1'
+              title='Kursus daring'
+              src='/images/penerapan_blended_learning.png'
+              desc='Penerapan Blended Learning'
+              date='03 - 09 Februari 2022'
+            />
+            <Link href='/webinar/bincang-guru-inovatif'>
+              <a>
+                <FullCard
+                  className='col-span-1'
+                  title='Webinar'
+                  src='/images/bincang_guru_inovatif.png'
+                  desc='Bincang Guru Inovatif'
+                  date='5 Februari 2022'
+                />
+              </a>
+            </Link>
+            <FullCard
+              className='col-span-1'
+              title='Video pendek'
+              src='/images/cara_membuat_google_form_kurang_dari_lima_menit.png'
+              desc='Cara Membuat Google Form Kurang Dari Lima Menit'
+            />
+            <FullCard
+              className='cols-span-1'
+              title='Kursus daring'
+              src='/images/siap_hadapi_akm!.png'
+              desc='Siap Hadapi AKM!'
+              date='01 - 03 Februari 2022'
+            />
+            <Link href='/webinar/persiapan-tatap-muka'>
+              <a>
+                <FullCard
+                  className='cols-span-1'
+                  title='Webinar'
+                  src='/images/persiapan_tatap_muka.png'
+                  desc='Persiapan Tatap Muka'
+                  date='03 Januari 2022'
+                />
+              </a>
+            </Link>
+            <FullCard
+              className='cols-span-1'
+              title='Video pendek'
+              src='/images/rumus_rumus_microsoft_excel_yang_wajib_diketahui.png'
+              desc='Rumus - Rumus Microsoft Excel yang Wajib Diketahui'
+            />
           </div>
         </section>
 
         <section className='flex flex-col min-h-main md:flex-row-reverse'>
-          <div className='flex items-center justify-center flex-1'>
-            <h2 className='text-5xl text-right text-dark'>
+          <div className='flex items-end md:items-center justify-center flex-1'>
+            <h2 className='text-3xl md:text-4xl lg:text-5xl text-center md:text-right text-dark'>
               <span className='text-[#55BBF6] text-3xl'>Testimoni</span> <br />{' '}
               Lihatlah apa yang <br /> dirasakan oleh <br />
               pengguna kami
             </h2>
           </div>
-          <div className='flex items-center justify-center flex-1'>
+          <div className='flex items-start md:items-center justify-center flex-1'>
             <div className='p-6 bg-white border-b-4 border-r-4 border-gray-200 rounded-md shadow-lg'>
               <div className='px-4 py-5 sm:px-6'>
                 <div className='flex flex-wrap items-center justify-between -mt-4 -ml-4 sm:flex-nowrap'>
@@ -185,17 +182,17 @@ export default function Home() {
                 <div className='w-full translate-y-1/2 border-t border-dark' />
               </div>
               <div className='relative flex justify-center text-sm'>
-                <h2 className='px-2 text-5xl bg-white text-dark'>
+                <h2 className='px-2 text-4xl md:text-5xl bg-white text-dark'>
                   Ajar<span className='text-secondary'>in</span>
                 </h2>
               </div>
             </div>
-            <p className='w-1/2 mx-auto mb-12 text-2xl'>
+            <p className='md:w-1/2 mx-auto mb-12 text-lg md:text-2xl'>
               Kursus daring, webinar, video pendek, alat mengajar, komunitas
               ajarin, dan lain-lainya. Yuk gabung dengan komunitas ajarin!
             </p>
             <Link href='#'>
-              <a className='px-6 py-3 text-xl font-bold text-white rounded-lg bg-secondary'>
+              <a className='px-6 py-3 text-lg md:text-xl font-bold text-white rounded-lg bg-secondary'>
                 Gabung
               </a>
             </Link>
@@ -207,7 +204,7 @@ export default function Home() {
             <h2 className='mb-12 text-4xl font-medium text-center'>
               Ajarin Bekerjasama Dengan Beberapa Mitra
             </h2>
-            <div className='relative grid grid-cols-5 gap-4'>
+            <div className='relative grid grid-cols-1 lg:grid-cols-5 gap-4'>
               <div className='relative w-full h-48 col-span-1 bg-gray-300 animate-pulse'>
                 {/* <Image
                   src='/images/zenius.png'

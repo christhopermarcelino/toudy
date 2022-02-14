@@ -8,7 +8,7 @@ export default function FullCard({ title, src, desc, date, className }) {
           backgroundImage: `url(${src})`,
         }}
         className={classNames(
-          `before:block before:absolute before:-inset-0 mb-3 relative before:bg-gradient-to-t before:from-[#454343] before:to-transparent rounded-lg overflow-hidden shadow-md flex h-96 justify-center items-end ${className}`
+          `before:block before:absolute bg-cover bg-no-repeat before:-inset-0 mb-3 relative before:bg-gradient-to-t before:from-[#454343] before:to-transparent rounded-lg overflow-hidden shadow-md flex h-96 justify-center items-end ${className}`
         )}
       >
         <p className='mb-4 font-bold text-white relative'>{title}</p>
