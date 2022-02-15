@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 import SelectInput from '@/components/SelectInput';
 import Navbar from '@/components/Navbar';
@@ -9,6 +10,18 @@ import FullCard from '@/components/FullCard';
 import Footer from '@/components/Footer';
 
 export default function Home() {
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios
+        .post('https://toudy.herokuapp.com/api/user/get-info', {
+          token,
+        })
+        .then((res) => dispacth(res.data))
+        .catch((err) => alert(err.message));
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -18,7 +31,7 @@ export default function Home() {
       </Head>
       <Navbar />
 
-      <main className='px-2 mx-auto max-w-7xl sm:px-6 lg:px-8 space-y-24'>
+      <main className='px-2 mx-auto space-y-24 max-w-7xl sm:px-6 lg:px-8'>
         <section className='flex flex-col md:flex-row min-h-main'>
           <div className='flex flex-col justify-center flex-[2_2_0%] md:flex-1'>
             <h2 className='mb-8 text-5xl md:text-7xl text-dark'>
@@ -42,12 +55,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section className='flex flex-col lg:flex-row min-h-main space-y-12'>
+        <section className='flex flex-col space-y-12 lg:flex-row min-h-main'>
           <h2 className='flex items-center flex-[2_2_0%] text-4xl lg:justify-start text-center lg:text-left justify-center md:text-5xl lg:text-6xl text-dark'>
             Layanan ini tersedia untuk anda
           </h2>
           <div className='flex-[3_3_0%] flex  flex-col md:space-y-16 gap-4 justify-center items-center'>
-            <div className='flex flex-col md:flex-row items-end justify-center gap-4'>
+            <div className='flex flex-col items-end justify-center gap-4 md:flex-row'>
               <ServiceCard
                 src='/images/kursus_daring.png'
                 title='Kursus Daring'
@@ -58,7 +71,7 @@ export default function Home() {
                 title='Video Pendek'
               />
             </div>
-            <div className='flex justify-center flex-col md:flex-row gap-4'>
+            <div className='flex flex-col justify-center gap-4 md:flex-row'>
               <ServiceCard
                 src='/images/alat_mengajar.png'
                 title='Alat mengajar'
@@ -72,10 +85,10 @@ export default function Home() {
         </section>
 
         <section className='min-h-main'>
-          <h2 className='mb-8 text-3xl md:text-4xl lg:text-5xl text-center text-dark'>
+          <h2 className='mb-8 text-3xl text-center md:text-4xl lg:text-5xl text-dark'>
             Materi Pembelajaran
           </h2>
-          <div className='grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-12 rows-span-1'>
+          <div className='grid grid-cols-1 gap-12 lg:grid-cols-3 md:grid-cols-2 rows-span-1'>
             <FullCard
               className='col-span-1'
               title='Kursus daring'
@@ -128,14 +141,14 @@ export default function Home() {
         </section>
 
         <section className='flex flex-col min-h-main md:flex-row-reverse'>
-          <div className='flex items-end md:items-center justify-center flex-1'>
-            <h2 className='text-3xl md:text-4xl lg:text-5xl text-center md:text-right text-dark'>
+          <div className='flex items-end justify-center flex-1 md:items-center'>
+            <h2 className='text-3xl text-center md:text-4xl lg:text-5xl md:text-right text-dark'>
               <span className='text-[#55BBF6] text-3xl'>Testimoni</span> <br />{' '}
               Lihatlah apa yang <br /> dirasakan oleh <br />
               pengguna kami
             </h2>
           </div>
-          <div className='flex items-start md:items-center justify-center flex-1'>
+          <div className='flex items-start justify-center flex-1 md:items-center'>
             <div className='p-6 bg-white border-b-4 border-r-4 border-gray-200 rounded-md shadow-lg'>
               <div className='px-4 py-5 sm:px-6'>
                 <div className='flex flex-wrap items-center justify-between -mt-4 -ml-4 sm:flex-nowrap'>
@@ -182,17 +195,17 @@ export default function Home() {
                 <div className='w-full translate-y-1/2 border-t border-dark' />
               </div>
               <div className='relative flex justify-center text-sm'>
-                <h2 className='px-2 text-4xl md:text-5xl bg-white text-dark'>
+                <h2 className='px-2 text-4xl bg-white md:text-5xl text-dark'>
                   Ajar<span className='text-secondary'>in</span>
                 </h2>
               </div>
             </div>
-            <p className='md:w-1/2 mx-auto mb-12 text-lg md:text-2xl'>
+            <p className='mx-auto mb-12 text-lg md:w-1/2 md:text-2xl'>
               Kursus daring, webinar, video pendek, alat mengajar, komunitas
               ajarin, dan lain-lainya. Yuk gabung dengan komunitas ajarin!
             </p>
             <Link href='#'>
-              <a className='px-6 py-3 text-lg md:text-xl font-bold text-white rounded-lg bg-secondary'>
+              <a className='px-6 py-3 text-lg font-bold text-white rounded-lg md:text-xl bg-secondary'>
                 Gabung
               </a>
             </Link>
@@ -204,7 +217,7 @@ export default function Home() {
             <h2 className='mb-12 text-4xl font-medium text-center'>
               Ajarin Bekerjasama Dengan Beberapa Mitra
             </h2>
-            <div className='relative grid grid-cols-1 lg:grid-cols-5 gap-4'>
+            <div className='relative grid grid-cols-1 gap-4 lg:grid-cols-5'>
               <div className='relative w-full h-48 col-span-1 bg-gray-300 animate-pulse'>
                 {/* <Image
                   src='/images/zenius.png'

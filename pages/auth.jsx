@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Router from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { useAuth, useDispatch } from '@/context/AuthProvider';
@@ -8,39 +9,64 @@ import { useAuth, useDispatch } from '@/context/AuthProvider';
 import BottomBorderInput from '@/components/BottomBorderInput';
 import Navbar from '@/components/Navbar';
 
-import data from '../data.js';
-
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const auth = useAuth();
   const dispacth = useDispatch();
-  const { nama_pengguna, kata_sandi, email } = data;
 
   const methods = useForm();
   const { handleSubmit } = methods;
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios
+        .post('https://toudy.herokuapp.com/api/user/get-info', {
+          token,
+        })
+        .then((res) => dispacth(res.data))
+        .catch((err) => alert(err.message));
+    }
+  }, []);
+
   const onLoginSubmit = (data) => {
-    const { nama_pengguna: login_username, kata_sandi: login_password } = data;
-    if (login_username != nama_pengguna || login_password != kata_sandi) return;
-    dispacth({ nama_pengguna, kata_sandi });
-    Router.push('/');
+    const { username, password } = data;
+
+    if (!username || !password) return;
+
+    axios
+      .post('https://toudy.herokuapp.com/api/user/login', {
+        username,
+        password,
+      })
+      .then((res) => {
+        localStorage.setItem('token', res.token);
+        axios
+          .post('https://toudy.herokuapp.com/api/user/get-info', {
+            token,
+          })
+          .then((res) => dispacth(res.data))
+          .catch((err) => alert(err.message));
+        Router.push('/');
+      })
+      .catch((err) => alert(err.message));
   };
 
   const onRegisterSubmit = (data) => {
-    const {
-      nama_pengguna: register_username,
-      kata_sandi: register_password,
-      email: register_email,
-    } = data;
+    const { username, password, email } = data;
 
-    if (
-      register_username != nama_pengguna ||
-      register_password != kata_sandi ||
-      register_email != email
-    )
-      return;
+    console.log(data);
 
-    Router.push('/auth');
+    if (!username || !password || !email) return;
+
+    axios
+      .post('https://toudy.herokuapp.com/api/user/register', {
+        username,
+        email,
+        password,
+      })
+      .then((res) => Router.push('/auth'))
+      .catch((err) => alert(err.message));
   };
 
   return (
@@ -75,10 +101,10 @@ export default function Auth() {
             <FormProvider {...methods}>
               {isLogin && (
                 <form onSubmit={handleSubmit(onLoginSubmit)}>
-                  <BottomBorderInput label='Nama pengguna' id='nama_pengguna' />
+                  <BottomBorderInput label='Nama pengguna' id='username' />
                   <BottomBorderInput
                     label='Kata sandi'
-                    id='kata_sandi'
+                    id='password'
                     type='password'
                   />
                   <div className='flex justify-center'>
@@ -93,11 +119,11 @@ export default function Auth() {
               )}
               {!isLogin && (
                 <form onSubmit={handleSubmit(onRegisterSubmit)}>
-                  <BottomBorderInput label='Nama pengguna' id='nama_pengguna' />
+                  <BottomBorderInput label='Nama pengguna' id='username' />
                   <BottomBorderInput label='Email' id='email' type='email' />
                   <BottomBorderInput
                     label='Kata sandi'
-                    id='kata_sandi'
+                    id='password'
                     type='password'
                   />
                   <div className='flex justify-center'>
