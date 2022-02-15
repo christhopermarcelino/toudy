@@ -3,9 +3,11 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const db = require('./models');
 
 app.use(express.json());
+app.use(cors());
 
 // const
 const PORT = process.env.PORT || 3001;
@@ -19,11 +21,11 @@ app.get('/', (req, res) => {
   res.status(200).json({ success: true, message: 'Toudy Project' });
 });
 
-// db.sequelize
-//   .sync({ force: true })
-//   .then(async () => {
-//     app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
-//   })
-//   .catch((err) => console.log(err));
+db.sequelize
+  .sync({ force: true })
+  .then(async () => {
+    app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+  })
+  .catch((err) => console.log(err));
 
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
