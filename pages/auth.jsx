@@ -55,8 +55,6 @@ export default function Auth() {
   const onRegisterSubmit = (data) => {
     const { username, password, email } = data;
 
-    console.log(data);
-
     if (!username || !password || !email) return;
 
     axios
