@@ -21,7 +21,7 @@ export default function Auth() {
     const token = localStorage.getItem('token');
     if (token) {
       axios
-        .post('https://toudy.herokuapp.com/api/user/get-info', {
+        .post('/user/get-info', {
           token,
         })
         .then((res) => dispacth(res.data))
@@ -35,14 +35,14 @@ export default function Auth() {
     if (!username || !password) return;
 
     axios
-      .post('https://toudy.herokuapp.com/api/user/login', {
+      .post('/user/login', {
         username,
         password,
       })
       .then((res) => {
         localStorage.setItem('token', res.token);
         axios
-          .post('https://toudy.herokuapp.com/api/user/get-info', {
+          .post('/user/get-info', {
             token,
           })
           .then((res) => dispacth(res.data))
@@ -60,7 +60,7 @@ export default function Auth() {
     if (!username || !password || !email) return;
 
     axios
-      .post('https://toudy.herokuapp.com/api/user/register', {
+      .post('/user/register', {
         username,
         email,
         password,
