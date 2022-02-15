@@ -12,7 +12,7 @@ import Navbar from '@/components/Navbar';
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const auth = useAuth();
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
 
   const methods = useForm();
   const { handleSubmit } = methods;
@@ -24,10 +24,10 @@ export default function Auth() {
         .post('/user/get-info', {
           token,
         })
-        .then((res) => dispacth(res.data))
+        .then((res) => dispatch(res.data))
         .catch((err) => alert(err.message));
     }
-  }, []);
+  }, [dispatch]);
 
   const onLoginSubmit = (data) => {
     const { username, password } = data;
@@ -45,7 +45,7 @@ export default function Auth() {
           .post('/user/get-info', {
             token,
           })
-          .then((res) => dispacth(res.data))
+          .then((res) => dispatch(res.data))
           .catch((err) => alert(err.message));
         Router.push('/');
       })
