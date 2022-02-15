@@ -13,6 +13,10 @@ const { User } = require('./models');
 const PORT = process.env.PORT || 3001;
 
 // route
+const UserRoute = require('./routes/UserRoute');
+
+app.use('/api/user', UserRoute);
+
 app.get('/', (req, res) => {
   res.status(200).json({ success: true, message: 'Toudy Project' });
 });
