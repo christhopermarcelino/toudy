@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 const { User } = require('../models');
 
 const createUser = async (req, res) => {
@@ -19,8 +21,9 @@ const createUser = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
+  const { username: user_name, password } = req.body;
+
+  if (!user_name || !password) {
     res.status(400).json({
       success: false,
       message: 'Username and password are required',
@@ -29,7 +32,7 @@ const getUser = async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ username: username });
+    const user = await User.findOne({ where: { username: user_name } });
 
     if (user.password != password) {
       res.status(403).json({
@@ -38,8 +41,14 @@ const getUser = async (req, res) => {
       });
       return;
     }
+    const { username, fullname, email, institusi } = user;
 
-    res.status(200).json({ success: true, data: user });
+    const token = await jwt.sign(
+      { username, fullname, email, institusi },
+      process.env.JWT_SECRET
+    );
+
+    res.status(200).json({ success: true, token });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
