@@ -7,7 +7,11 @@ const cors = require('cors');
 const db = require('./models');
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 
 // const
 const PORT = process.env.PORT || 3001;
