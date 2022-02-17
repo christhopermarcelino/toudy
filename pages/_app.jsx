@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }) {
     process.env.NODE_ENV === 'production'
       ? 'https://toudy.herokuapp.com/api'
       : 'http://localhost:3001/api';
+
   return (
     <AuthProvider>
       <Component {...pageProps} />

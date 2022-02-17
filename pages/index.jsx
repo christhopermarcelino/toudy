@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
 
 import SelectInput from '@/components/SelectInput';
 import Navbar from '@/components/Navbar';
@@ -10,18 +9,6 @@ import FullCard from '@/components/FullCard';
 import Footer from '@/components/Footer';
 
 export default function Home() {
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      axios
-        .post('https://toudy.herokuapp.com/api/user/get-info', {
-          token,
-        })
-        .then((res) => dispacth(res.data))
-        .catch((err) => alert(err.message));
-    }
-  }, []);
-
   return (
     <>
       <Head>

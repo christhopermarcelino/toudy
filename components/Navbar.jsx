@@ -1,17 +1,38 @@
-import { Fragment } from 'react';
 import Image from 'next/image';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import { classNames } from '@/lib/helpers';
+import { Disclosure } from '@headlessui/react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 import { useAuth } from '@/context/AuthProvider';
+import { useDispatch } from '@/context/AuthProvider';
 
 export default function Navbar() {
   const user = useAuth();
+  const dispatch = useDispatch();
   const router = useRouter();
   const currentPath = router.pathname;
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios
+        .post(
+          '/user/get-info',
+          {},
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((res) => {
+          dispatch(res.data.data);
+        })
+        .catch((err) => {});
+    }
+  }, []);
 
   return (
     <Disclosure as='nav' className='sticky top-0 z-50 bg-white shadow'>

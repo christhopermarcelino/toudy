@@ -11,7 +11,6 @@ import Navbar from '@/components/Navbar';
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
-  const auth = useAuth();
   const dispatch = useDispatch();
 
   const methods = useForm();
@@ -40,13 +39,24 @@ export default function Auth() {
         password,
       })
       .then((res) => {
-        localStorage.setItem('token', res.token);
+        const token = res.data.token;
+        localStorage.setItem('token', token);
         axios
-          .post('/user/get-info', {
-            token,
+          .post(
+            '/user/get-info',
+            {},
+            {
+              headers: {
+                authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          .then((res) => {
+            dispatch(res.data.data);
           })
-          .then((res) => dispatch(res.data))
-          .catch((err) => alert(err.message));
+          .catch((err) => {
+            alert(err.message);
+          });
         Router.push('/');
       })
       .catch((err) => alert(err.message));
@@ -63,8 +73,14 @@ export default function Auth() {
         email,
         password,
       })
-      .then((res) => Router.push('/auth'))
-      .catch((err) => alert(err.message));
+      .then((res) => {
+        alert(res.data.message);
+        setIsLogin(true);
+      })
+      .catch((err) => {
+        alert(err.message);
+        setIsLogin(false);
+      });
   };
 
   return (
