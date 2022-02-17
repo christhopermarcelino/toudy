@@ -22,7 +22,13 @@ export default function Profil() {
     if (!user) Router.push('/auth');
   });
 
-  const methods = useForm();
+  const methods = useForm({
+    defaultValues: {
+      nama_lengkap: user ? user?.username : '',
+      email: user ? user?.email : '',
+      instansi: user ? user?.instansi : '',
+    },
+  });
   const { handleSubmit } = methods;
 
   const onEditProfile = (data) => {

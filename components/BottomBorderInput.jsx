@@ -5,6 +5,7 @@ export default function BottomBorderInput({
   id,
   type = 'text',
   disabled = false,
+  defaultValue = '',
 }) {
   const { register } = useFormContext();
 
@@ -20,6 +21,7 @@ export default function BottomBorderInput({
           id={id}
           name={id}
           disabled={disabled}
+          defaultValue={defaultValue}
           className='block w-full pr-10 bg-transparent border-0 border-b-2 sm:text-sm focus:ring-0 border-b-gray-400 focus:border-b-gray-800'
         />
         <div className='absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none'>
