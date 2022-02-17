@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import Router from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { useAuth, useDispatch } from '@/context/AuthProvider';
+import { useDispatch } from '@/context/AuthProvider';
 
 import BottomBorderInput from '@/components/BottomBorderInput';
 import Navbar from '@/components/Navbar';
@@ -15,18 +15,6 @@ export default function Auth() {
 
   const methods = useForm();
   const { handleSubmit } = methods;
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      axios
-        .post('/user/get-info', {
-          token,
-        })
-        .then((res) => dispatch(res.data))
-        .catch((err) => alert(err.message));
-    }
-  }, [dispatch]);
 
   const onLoginSubmit = (data) => {
     const { username, password } = data;
