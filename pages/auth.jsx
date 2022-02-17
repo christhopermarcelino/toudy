@@ -1,20 +1,25 @@
 import Head from 'next/head';
 import Router from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { useDispatch } from '@/context/AuthProvider';
+import { useAuth, useDispatch } from '@/context/AuthProvider';
 
 import BottomBorderInput from '@/components/BottomBorderInput';
 import Navbar from '@/components/Navbar';
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
+  const auth = useAuth();
   const dispatch = useDispatch();
 
   const methods = useForm();
   const { handleSubmit } = methods;
+
+  useEffect(() => {
+    if (auth) Router.back();
+  }, [auth]);
 
   const onLoginSubmit = (data) => {
     const { username, password } = data;
