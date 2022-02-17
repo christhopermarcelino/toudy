@@ -3,35 +3,35 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
 const register = async (req, res) => {
-  const { username, password, email } = req.body;
-  if (!username || !password || !email) {
-    res.status(400).json({
-      success: false,
-      message: 'Username, password, and email are required',
-    });
-    return;
-  }
-
   try {
-    await User.create({ username, email, password });
+    const { username, password, email } = req.body;
+    if (!username || !password || !email) {
+      res.status(400).json({
+        success: false,
+        message: 'Username, password, and email are required',
+      });
+      return;
+    }
+
     res.status(201).json({ success: true, message: 'User created' });
+    res.status(500).json({ success: false, message: err.message });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
 };
 
 const login = async (req, res) => {
-  const { username: user_name, password } = req.body;
-
-  if (!user_name || !password) {
-    res.status(400).json({
-      success: false,
-      message: 'Username and password are required',
-    });
-    return;
-  }
-
   try {
+    const { username: user_name, password } = req.body;
+
+    if (!user_name || !password) {
+      res.status(400).json({
+        success: false,
+        message: 'Username and password are required',
+      });
+      return;
+    }
+
     const user = await User.findOne({ where: { username: user_name } });
 
     if (user.password != password) {
@@ -55,13 +55,13 @@ const login = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-  const auth = req.header('authorization');
-  if (!auth.startsWith('Bearer ')) {
-    res.status(400).json({ success: false, message: 'Token invali' });
-  }
-  const token = auth.split(' ')[1];
-
   try {
+    const auth = req.header('authorization');
+    if (!auth.startsWith('Bearer ')) {
+      res.status(400).json({ success: false, message: 'Token invali' });
+    }
+    const token = auth.split(' ')[1];
+
     const data = await jwt.verify(token, process.env.JWT_SECRET);
 
     res.status(200).json({ success: true, data });
