@@ -13,8 +13,9 @@ const register = async (req, res) => {
       return;
     }
 
+    await User.create({ username, email, password });
+
     res.status(201).json({ success: true, message: 'User created' });
-    res.status(500).json({ success: false, message: err.message });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
