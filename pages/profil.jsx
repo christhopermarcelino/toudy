@@ -48,7 +48,11 @@ export default function Profil() {
           <div className='flex flex-col justify-center items-center flex-[2_2_0%]'>
             <div className='relative w-3/4 h-64 mb-6 rounded-full'>
               <Image
-                src='/images/profile_pic.png'
+                src={
+                  user?.image != null
+                    ? '/images/profile_pic'
+                    : '/icons/person.svg'
+                }
                 alt='Profile picture'
                 layout='fill'
                 objectFit='contain'

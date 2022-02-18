@@ -104,8 +104,12 @@ export default function Navbar() {
                       <a>
                         <span className='sr-only'>Open user menu</span>
                         <Image
+                          src={
+                            user?.image != null
+                              ? '/images/profile_pic'
+                              : '/icons/person.svg'
+                          }
                           className='w-8 h-8 rounded-full'
-                          src='/images/profile_pic.png'
                           alt='Profile Pciture'
                           height='36'
                           width='36'
