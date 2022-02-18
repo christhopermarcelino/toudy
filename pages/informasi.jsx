@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -34,21 +35,29 @@ export default function Informasi() {
           <div>
             <h2 className='mb-4'>Webinar</h2>
             <div className='flex gap-8'>
-              <SquareCard
-                src='/images/bincang_guru_inovatif.png'
-                title='Bincang Guru Inovatif'
-                date='5 Februari 2022'
-              />
+              <Link href='/webinar/bincang-guru-inovatif'>
+                <a>
+                  <SquareCard
+                    src='/images/bincang_guru_inovatif.png'
+                    title='Bincang Guru Inovatif'
+                    date='5 Februari 2022'
+                  />
+                </a>
+              </Link>
               <SquareCard
                 src='/images/webinar_dan_workshop_series1_sabbara.png'
                 title='Webinar dan Workshop Series 1 SABBARA'
                 date='28 Januari 2022'
               />
-              <SquareCard
-                src='/images/persiapan_tatap_muka.png'
-                title='Persiapan Tatap Muka'
-                date='3 Januari 2022'
-              />
+              <Link href='/webinar/persiapan-tatap-muka'>
+                <a>
+                  <SquareCard
+                    src='/images/persiapan_tatap_muka.png'
+                    title='Persiapan Tatap Muka'
+                    date='3 Januari 2022'
+                  />
+                </a>
+              </Link>
             </div>
           </div>
         </section>
