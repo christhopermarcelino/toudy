@@ -89,71 +89,100 @@ export default function Example() {
               </div>
               <div className='hidden sm:ml-6 sm:flex sm:items-center'>
                 {/* Profile dropdown */}
-                <Menu as='div' className='relative ml-3'>
-                  {({ open }) => (
-                    <>
-                      <div>
-                        <Menu.Button className='flex text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'>
-                          <span className='sr-only'>Open user menu</span>
-                          <Image
-                            src={
-                              user?.image != null
-                                ? '/images/profile_pic'
-                                : '/icons/person.svg'
-                            }
-                            className='w-8 h-8 rounded-full'
-                            alt='Profile Pciture'
-                            height='36'
-                            width='36'
-                          />
-                        </Menu.Button>
-                      </div>
-                      <Transition
-                        show={open}
-                        as={Fragment}
-                        enter='transition ease-out duration-200'
-                        enterFrom='transform opacity-0 scale-95'
-                        enterTo='transform opacity-100 scale-100'
-                        leave='transition ease-in duration-75'
-                        leaveFrom='transform opacity-100 scale-100'
-                        leaveTo='transform opacity-0 scale-95'
-                      >
-                        <Menu.Items
-                          static
-                          className='absolute right-0 z-50 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
+                {user ? (
+                  <Menu as='div' className='relative ml-3'>
+                    {({ open }) => (
+                      <>
+                        <div>
+                          <Menu.Button className='flex text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'>
+                            <span className='sr-only'>Open user menu</span>
+                            <Image
+                              src={
+                                user?.image != null
+                                  ? '/images/profile_pic'
+                                  : '/icons/person.svg'
+                              }
+                              className='w-8 h-8 rounded-full'
+                              alt='Profile Pciture'
+                              height='36'
+                              width='36'
+                            />
+                          </Menu.Button>
+                        </div>
+                        <Transition
+                          show={open}
+                          as={Fragment}
+                          enter='transition ease-out duration-200'
+                          enterFrom='transform opacity-0 scale-95'
+                          enterTo='transform opacity-100 scale-100'
+                          leave='transition ease-in duration-75'
+                          leaveFrom='transform opacity-100 scale-100'
+                          leaveTo='transform opacity-0 scale-95'
                         >
-                          <Menu.Item>
-                            {({ active }) => (
-                              <Link href='/profil'>
-                                <a
+                          <Menu.Items
+                            static
+                            className='absolute right-0 z-50 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
+                          >
+                            <Menu.Item>
+                              {({ active }) => (
+                                <Link href='/profil'>
+                                  <a
+                                    className={classNames(
+                                      active ? 'bg-gray-100' : '',
+                                      'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                                    )}
+                                  >
+                                    Profil
+                                  </a>
+                                </Link>
+                              )}
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <button
+                                  onClick={signOutHandle}
                                   className={classNames(
                                     active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                                    'block px-4 py-2 text-sm text-gray-700 w-full text-left'
                                   )}
                                 >
-                                  Profil
-                                </a>
-                              </Link>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <button
-                                onClick={signOutHandle}
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700 w-full text-left'
-                                )}
-                              >
-                                Sign out
-                              </button>
-                            )}
-                          </Menu.Item>
-                        </Menu.Items>
-                      </Transition>
-                    </>
-                  )}
-                </Menu>
+                                  Sign out
+                                </button>
+                              )}
+                            </Menu.Item>
+                          </Menu.Items>
+                        </Transition>
+                      </>
+                    )}
+                  </Menu>
+                ) : (
+                  <Link href='/auth'>
+                    <a>
+                      <button
+                        type='button'
+                        className='inline-flex items-center px-4 py-2 ml-8 text-sm font-medium text-blue-400 border border-transparent rounded-full shadow-sm hover:text-white focus:text-white hover:bg-blue-300 ring-2 ring-blue-400 focus:bg-blue-500'
+                      >
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          className='w-5 h-5 mr-2 -ml-1 text-blue-400 hover:text-white focus:text-white'
+                          aria-hidden='true'
+                          fill='none'
+                          viewBox='0 0 24 24'
+                          stroke='currentColor'
+                        >
+                          <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth={2}
+                            d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1'
+                          />
+                        </svg>
+                        {/* <MailIcon className="w-5 h-5 mr-2 -ml-1" aria-hidden="true" /> */}
+                        Masuk
+                      </button>
+                    </a>
+                  </Link>
+                )}
               </div>
               <div className='flex items-center -mr-2 sm:hidden'>
                 {/* Mobile menu button */}
@@ -223,48 +252,81 @@ export default function Example() {
               </Link>
             </div>
             <div className='pt-4 pb-3 border-t border-gray-200'>
-              <div className='flex items-center px-4'>
-                <div className='flex-shrink-0'>
-                  <Image
-                    src={
-                      user?.image != null
-                        ? '/images/profile_pic'
-                        : '/icons/person.svg'
-                    }
-                    className='w-8 h-8 rounded-full'
-                    alt='Profile Pciture'
-                    height='36'
-                    width='36'
-                  />
-                </div>
-                <div className='ml-3'>
-                  <div className='text-base font-medium text-gray-800'>
-                    {user?.username}
+              {user && (
+                <div className='flex items-center px-4'>
+                  <div className='flex-shrink-0'>
+                    <Image
+                      src={
+                        user?.image != null
+                          ? '/images/profile_pic'
+                          : '/icons/person.svg'
+                      }
+                      className='w-8 h-8 rounded-full'
+                      alt='Profile Pciture'
+                      height='36'
+                      width='36'
+                    />
                   </div>
-                  <div className='text-sm font-medium text-gray-500'>
-                    {user?.email}
+                  <div className='ml-3'>
+                    <div className='text-base font-medium text-gray-800'>
+                      {user?.username}
+                    </div>
+                    <div className='text-sm font-medium text-gray-500'>
+                      {user?.email}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
               <div className='mt-3 space-y-1'>
-                <Link href='/profil'>
-                  <a
-                    className={classNames(
-                      currentPath === '/profil'
-                        ? 'bg-gray-50 border-gray-500 border-l-4'
-                        : '',
-                      'block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100'
-                    )}
-                  >
-                    Profil
-                  </a>
-                </Link>
-                <button
-                  onClick={signOutHandle}
-                  className='block w-full px-4 py-2 text-base font-medium text-left text-gray-500 hover:text-gray-800 hover:bg-gray-100'
-                >
-                  Sign out
-                </button>
+                {user ? (
+                  <>
+                    <Link href='/profil'>
+                      <a
+                        className={classNames(
+                          currentPath === '/profil'
+                            ? 'bg-gray-50 border-gray-500 border-l-4'
+                            : '',
+                          'block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100'
+                        )}
+                      >
+                        Profil
+                      </a>
+                    </Link>
+                    <button
+                      onClick={signOutHandle}
+                      className='block w-full px-4 py-2 text-base font-medium text-left text-gray-500 hover:text-gray-800 hover:bg-gray-100'
+                    >
+                      Sign out
+                    </button>
+                  </>
+                ) : (
+                  <Link href='/auth'>
+                    <a>
+                      <button
+                        type='button'
+                        className='inline-flex items-center ml-4 px-4 py-2 text-sm font-medium text-blue-400 border border-transparent rounded-full shadow-sm hover:text-white focus:text-white hover:bg-blue-300 ring-2 ring-blue-400 focus:bg-blue-500'
+                      >
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          className='w-5 h-5 mr-2 -ml-1 text-blue-400 hover:text-white focus:text-white'
+                          aria-hidden='true'
+                          fill='none'
+                          viewBox='0 0 24 24'
+                          stroke='currentColor'
+                        >
+                          <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth={2}
+                            d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1'
+                          />
+                        </svg>
+                        {/* <MailIcon className="w-5 h-5 mr-2 -ml-1" aria-hidden="true" /> */}
+                        Masuk
+                      </button>
+                    </a>
+                  </Link>
+                )}
               </div>
             </div>
           </Disclosure.Panel>
