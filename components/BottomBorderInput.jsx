@@ -6,6 +6,8 @@ export default function BottomBorderInput({
   type = 'text',
   disabled = false,
   defaultValue = '',
+  Icon = null,
+  iconAction = null,
 }) {
   const { register } = useFormContext();
 
@@ -24,9 +26,13 @@ export default function BottomBorderInput({
           defaultValue={defaultValue}
           className='block w-full pr-10 bg-transparent border-0 border-b-2 sm:text-sm focus:ring-0 border-b-gray-400 focus:border-b-gray-800'
         />
-        <div className='absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none'>
-          <span className='w-5 h-5 text-gray-400'>icon</span>
-        </div>
+        {Icon != null && (
+          <div className='absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none'>
+            <button onClick={iconAction} className='w-5 h-5 text-gray-400'>
+              <Icon />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
